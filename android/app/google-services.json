@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "622179944339",
+    "project_id": "lexit-ee622",
+    "storage_bucket": "lexit-ee622.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622179944339:android:86179cf64e46f7f1668a66",
+        "android_client_info": {
+          "package_name": "com.example.lexit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622179944339-s5metu2nuqr10rojvf0p6m6qhc3r4nkf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbtAt691KTd0Z8gqCuMkjMXY1BqKGZfoo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622179944339-s5metu2nuqr10rojvf0p6m6qhc3r4nkf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
