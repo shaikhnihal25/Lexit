@@ -12,6 +12,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<bool> isAvailable = [true, false, true, true, false];
+  List<String> names = [
+    "Bryan Mike",
+    "Sushant Mahtre",
+    "Kumar Shanvi",
+    "Pooja Rathod",
+    "Sahil Khan"
+  ];
+  List<String> prices = ["199", "249", "399", "500", "1199"];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -47,13 +56,13 @@ class _HomePageState extends State<HomePage> {
                 child: LawyerCard(
                     image:
                         'https://images.unsplash.com/photo-1549923746-c502d488b3ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80',
-                    name: 'Bryan Mike',
-                    price: '299',
-                    isAvailable: true,
+                    name: names[index],
+                    price: prices[index],
+                    isAvailable: isAvailable[index],
                     services: const [
                       'Real Estate',
                       'High Court',
-                      'Documentation'
+                      'Documentation',
                     ]),
               );
             },
