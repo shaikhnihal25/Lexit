@@ -67,7 +67,7 @@ class LawyerCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4.0),
                     Text(
-                      'Price: $price',
+                      'Consultation Fee: ₹$price',
                       style: const TextStyle(fontSize: 14.0),
                     ),
                     const SizedBox(height: 8.0),

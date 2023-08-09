@@ -121,11 +121,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: NeumorphicButton(
-          style: const NeumorphicStyle(
-            color: AppColors.buttonPrimary,
-            border: NeumorphicBorder.none(),
-          ),
+      bottomNavigationBar: ElevatedButton(
           onPressed: () {
             Get.to(AppointmentBookingScreen(
               lawyers: [
@@ -135,7 +131,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
             ));
           },
           child: SizedBox(
-            height: 50,
+            height: 60,
             width: context.screenWidth,
             child: const Center(
                 child: Text(

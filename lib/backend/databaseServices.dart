@@ -559,4 +559,54 @@ class LexitDatabase {
     // Upload the articlesMap to Firestore
     await collection.doc('COI').set({'data': articlesList});
   }
+
+  void bookAppoints(String lawyerId, String lawyerName, String service,
+      String date, String time) async {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    var uid = _auth.currentUser?.uid;
+    // Reference to the user's document
+    DocumentReference userDocRef =
+        FirebaseFirestore.instance.collection('users').doc(uid);
+
+    // Fetch the user's document
+    DocumentSnapshot userDocSnapshot = await userDocRef.get();
+    if (userDocSnapshot.exists) {
+      Map<String, dynamic> userData =
+          userDocSnapshot.data() as Map<String, dynamic>;
+
+      // Get the 'appointments' array
+      List<dynamic> appointments = userData['appointments'] ?? [];
+
+      // Create a new appointment object
+      Map<String, dynamic> newAppointment = {
+        'lawyerId': lawyerId,
+        'lawyerName': lawyerName,
+        'service': service,
+        'status': 'active',
+        'date': date,
+        'time': time, // New appointment status
+        // Other appointment details
+      };
+
+      // Add the new appointment to the 'appointments' array
+      appointments.add(newAppointment);
+
+      // Update the 'appointments' array in the user's document
+      await userDocRef.update({'appointments': appointments});
+
+      // Check if there's a previous appointment to mark as expired
+      if (appointments.length >= 2) {
+        // Get the document reference of the last appointment (excluding the newly added one)
+        Map<String, dynamic> lastAppointment =
+            appointments[appointments.length - 2];
+        if (lastAppointment.containsKey('status') &&
+            lastAppointment['status'] == 'active') {
+          lastAppointment['status'] = 'expired';
+
+          // Update the 'appointments' array in the user's document again
+          await userDocRef.update({'appointments': appointments});
+        }
+      }
+    }
+  }
 }

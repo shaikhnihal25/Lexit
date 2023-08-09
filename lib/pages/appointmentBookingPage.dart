@@ -5,6 +5,7 @@ import 'package:lexit/backend/authServices.dart';
 import 'package:lexit/backend/databaseServices.dart';
 import 'package:lexit/backend/notification/notificationServices.dart';
 import 'package:lexit/constant/appColors.dart';
+import 'package:lexit/pages/appointment/appointmentDetails.dart';
 import 'package:lexit/pages/appointment/appointmentHistory.dart';
 
 class AppointmentBookingScreen extends StatefulWidget {
@@ -147,12 +148,19 @@ class _AppointmentBookingScreenState extends State<AppointmentBookingScreen> {
                 });
 
                 if (isBooked) {
-                  LexitDatabase().bookAppointment(
+                  LexitDatabase().bookAppoints(
                       'lawyerId',
-                      lawyers[0],
+                      selectedLawyer,
                       selectedService,
                       '${selectedDate.toLocal().toString().split(' ')[0]}',
                       '${selectedTime.format(context)}');
+
+                  Get.to(() => AppointmentDetailsScreen(
+                        lawyerName: selectedLawyer,
+                        service: selectedService,
+                        time: selectedTime.format(context),
+                        date: selectedDate.toLocal().toString().split(' ')[0],
+                      ));
                 }
                 // Implement the logic to book the appointment here
               },
